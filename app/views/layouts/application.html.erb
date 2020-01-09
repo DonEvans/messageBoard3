@@ -1,15 +1,59 @@
+
+    
+
+
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MessageBoard3</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <!--<link href='http://fonts.googleapis.com/css?family=Lora|Ubuntu|Bad+Script|Open+Sans|Coming+Soon|Fondamento' rel='stylesheet' type='text/css'>-->
+  <title>Message Board | <%= @title %></title>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag 'styles_for_message_board', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class = "container">
+    <div class="header">Message board</div>
+    <div class="innerContainer"> 
+      <div class="sidebar">
+        <div class="nav">
+          <ul>
+
+          <li><%= link_to "Message Board", messages_path %></li>
+          <li><%= link_to "User List", user_list_path  %></li>
+          <li><%= link_to "Topic List", topics_path %> </li>
+          <li><%= link_to "Sign up", new_user_path %></li>
+
+          <% if signed_in? %>
+
+            <li>
+               <%= link_to "Make new Topic", new_topic_path %>
+            </li>
+
+            <li><%= link_to "Sign out", signout_path, 
+                :method => :delete %>
+            </li>
+
+          <% else %>
+            <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+
+          </ul>
+        </div>
+
+<%= yield %>
+
+    </div> 
+  </div>
+</body>
 </html>
+

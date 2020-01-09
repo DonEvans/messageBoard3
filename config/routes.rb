@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'application#hello'
+  root 'messages#index'
+  get '/signup', to: 'users#new'
+  resources :users
 end

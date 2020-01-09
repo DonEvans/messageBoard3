@@ -1,0 +1,39 @@
+</div> <!-- Close sidebar div -->
+
+<%= render 'shared/error_messages' %>
+
+<div class="smallContainer">
+  <h1>New member signup</h1>
+
+  <%= form_for(@user) do |f| %>
+  <ul class="form">
+    <li><%= f.label :name, "Your screen name"%><br />
+        <%= f.text_field :name %> </li> 
+
+    <%= render :partial => 'selectFontAndTextColor',
+                        :locals => { :f => f } %>
+
+    <li><%= f.label :password, 
+          "Enter password, minimum 6 characters" %>
+        <br /> <%= f.password_field :password %></li>
+
+    <li><%= f.label :password_confirmation, 
+                "Enter password again" %>
+        <br /><%= f.password_field :password_confirmation %></li>
+
+    <li><%= f.submit "Submit" %></li>
+  </ul>
+  <% end %>
+
+  <p>
+    Fonts: <span style="font-family: Bad Script; color: red;">Bad Script, </span>
+    <span style="font-family: Coming Soon; color: olive;">Coming Soon, </span>
+    <span style="font-family: Fondamento; color: silver;">Fondamento, </span>
+    <span style="font-family: Lora; color: yellow;">Lora, </span>
+    <span style="font-family: Open Sans; color: teal;">Open Sans, </span>
+    <span style="font-family: Ubuntu; color: orange;">Ubuntu </span>
+  </p>
+
+  <div class="centerFlash"><%= flash[:center] %></div>
+  <%= debug(params) if Rails.env.development? %>
+</div>
