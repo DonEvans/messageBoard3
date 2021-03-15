@@ -1,9 +1,10 @@
 class Message < ApplicationRecord
-  # belongs_to :user
+   #belongs_to :user
   # belongs_to :topic
   # attr_accessible :user_id, :content, :id, :created_at
 
-  # validates :user_id, :presence => true
-  # validates_numericality_of :user_id
+  validates :user_id, presence: true
+  #validates_numericality_of :user_id
+  validates :topic_id, presence: true
   validates :content, presence: true, length: { maximum: 1000 }
 end

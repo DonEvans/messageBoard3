@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  #has_many :topics
+  has_many :topics
   #has_many :messages
   #attr_accessible :name, :textColor, :font, :password, :password_confirmation
 
