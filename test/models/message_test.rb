@@ -1,9 +1,12 @@
-require 'test_helper'
+require "test_helper"
 
 class MessageTest < ActiveSupport::TestCase
   
   def setup 
-    @message = Message.new( content: "This some content!", user_id: 1,topic_id: 1 )
+    @topic = topics(:one)
+    @user = users(:michael)
+    @message = Message.new( content: "This some content!", user_id: @user.id,
+      topic_id: @topic.id )
   end
 
   test 'should be valid' do

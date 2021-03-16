@@ -22,8 +22,8 @@ class MessagesController < ApplicationController
     @form_heading = "Write post"
     @new_message = Message.new
     @user = User.all
-   # @topic_list = Topic.find :all, :order => "created_at DESC",
-   #            :limit => 15
+    @topic_list = Topic.find :all #, :order => "created_at DESC",
+        #      :limit => 15
   end
 
   private
