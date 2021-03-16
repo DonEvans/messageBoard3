@@ -1,0 +1,30 @@
+</div> <!-- Close sidebar div -->
+<% provide(:title, "Sign in") %>
+
+<div class="smallContainer">
+  <h1>Sign in</h1>
+
+  <%= form_with(url: signin_path, scope: :session, local: true) do |f| %>
+    <ul class="form">
+      <li>
+        <%= f.label :name%><br />
+        <%= f.text_field :name %>
+      </li>
+
+      <li>
+        <%= f.label :password%><br />
+        <%= f.password_field :password %>
+      </li>
+
+      <li>
+        <%= f.submit "Sign in" %>
+      </li>
+
+    </ul>
+  <% end %>
+
+  <p>New user? <%= link_to "Sign up now!", signup_path %> </p> 
+
+  <div class="centerFlash"><%= flash[:center] %></div>
+
+</div>

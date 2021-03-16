@@ -24,23 +24,23 @@
           <ul>
 
           <li><%= link_to "Message Board", messages_path %></li>
-          <li><%# link_to "User List", user_list_path  %></li>
+          <li><%= link_to "User List", users_path  %></li>
           <li><%= link_to "Topic List", topics_path %> </li>
           <li><%= link_to "Sign up", new_user_path %></li>
 
-          <%# if signed_in? %>
+          <% if signed_in? %>
 
             <li>
                <%= link_to "Make new Topic", new_topic_path %>
             </li>
 
-            <li><%# link_to "Sign out", signout_path, 
+            <li><%= link_to "Sign out", signout_path, 
                 :method => :delete %>
             </li>
 
-          <%# else %>
-            <li><%# link_to "Sign in", signin_path %></li>
-          <%# end %>
+          <% else %>
+            <li><% link_to "Sign in", signin_path %></li>
+          <% end %>
 
           </ul>
         </div>

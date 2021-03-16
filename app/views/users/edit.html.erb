@@ -2,7 +2,7 @@
 
 <div class="smallContainer">
   <h1>Edit settings for <%= @user.name %></h1>
-  <%= form_for(@user) do |f| %>
+  <%= form_with(model: @user, local: true) do |f| %>
   <ul class="form">
     
     <%= render :partial => 'selectFontAndTextColor',
