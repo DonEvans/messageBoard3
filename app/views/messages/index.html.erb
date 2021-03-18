@@ -1,0 +1,50 @@
+<!-- Message index -->
+  <div class="topics" id = "longTopics">
+    <%= render :partial => "shared/topics" %>
+  </div>
+
+  <div class = "newMessage" >
+  </div> 
+
+</div>  <!-- Sidebar div closed -->
+
+
+<div class="messageArea">
+
+  <h4>Recent posts</h4>
+
+    <% for message in @message %>
+
+      <h4 class = "compact"> 
+        <%= message.topic.title %>
+      </h4>
+
+      <div class = "message"
+        style = "color: <%= message.user.textColor %>;
+            font-family: <%= message.user.font %>;"
+      >
+
+      <p class="message">
+          <%=  message.content %>
+      </p>
+  
+      <p class = "info">
+        #<%= message.id %>
+        <%= message.created_at %>
+      </p>
+
+      <p class ="author">
+        <%= message.user.name %>
+      </p>
+
+      <span class="links">
+        <% if signed_in? %>
+          <%= link_to "Reply", topic_path(message.topic)%>
+        <% end %>
+      </span>
+
+      </div>
+      <br />
+    <% end %>
+
+</div>

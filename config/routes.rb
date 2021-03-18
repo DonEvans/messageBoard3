@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'messages/create'
+  get 'messages/index'
   root 'messages#index'
   
   get '/signin', to: 'sessions#new'

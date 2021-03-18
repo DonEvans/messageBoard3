@@ -1,2 +1,24 @@
-<h1>Topics#new</h1>
-<p>Find me in app/views/topics/new.html.erb</p>
+</div> <!-- Close sidebar div -->
+
+<div class = "smallContainer">
+  <h1>Make new Topic</h1>
+  <%= form_for @topic do |f|%>
+    <ul class="form">
+
+      <li>
+        <%= f.label :title, "Topic title, 25 character maximum" %>
+        <br />
+        <%= f.text_field :title %>
+      </li>
+
+      <li>
+        <%= f.submit "Submit" %>
+      </li>
+
+    </ul>
+  <% end %>
+
+  <div class="centerFlash"><%= flash[:center] %></div>
+
+</div>
+
