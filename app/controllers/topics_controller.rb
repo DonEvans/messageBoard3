@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_action :signed_in_user, only: [:new, :create]
   #before_filter :authenticate, :only => [:new, :create]
 
   def new

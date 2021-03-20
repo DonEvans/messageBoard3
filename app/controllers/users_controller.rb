@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :signed_in_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   #before_filter :authenticate, :only => [:edit,:update, :destroy]
   #before_filter :correct_user, :only => [:edit, :update, :destroy]
 
@@ -38,11 +39,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       flash[:update] = "Profile updated"
-      redirect_to :action => 'show'
+      redirect_to @user
     else
-      redirect_to :action => 'edit'
+      render 'edit'
     end
   end
 
@@ -56,8 +57,21 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-      :password_confirmation)
+      params.require(:user).permit(:name, :textColor, :font, :password,
+                                    :password_confirmation)
+    end
+
+    def signed_in_user
+      unless signed_in?
+        flash[:danger] = "Please log in."
+        redirect_to signin_url
+      end
+    end
+
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
     end
 
     # def authenticate

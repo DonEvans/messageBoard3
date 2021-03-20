@@ -4,4 +4,10 @@ michael:
   name: Michael Example
   textColor: red
   font: Verdana
-  password_digest: klhljkhl
+  password_digest: <%= User.digest('password') %>
+
+archer:
+  name: Sterling Archer
+  textColor: green
+  font: Lora
+  password_digest: <%= User.digest('password') %>

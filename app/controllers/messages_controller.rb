@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :signed_in_user, only: [:create]
   #before_filter :authenticate, :only => [:create]
 
   def create

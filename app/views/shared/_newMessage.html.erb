@@ -1,0 +1,15 @@
+<%# Fuctionality to create new message %>
+<%= form_for @new_message do |f|%>
+
+  <div class="messageFlash"><%= flash[:messageFlash] %></div>
+
+  <div>
+    <%= f.label :content, "800 character maximum" %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>

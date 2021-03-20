@@ -1,20 +1,12 @@
-</div> <!-- Close sidebar div -->
-
-<div class="smallContainer">
-  <h1>Edit settings for <%= @user.name %></h1>
-  <%= form_with(model: @user, local: true) do |f| %>
-  <ul class="form">
-    
-    <%= render :partial => 'selectFontAndTextColor',
-                        :locals => { :f => f } %>
-
-    <li><br /><%= f.submit "Submit" %></li>
-  </ul>
-  <% end %>
-
-
-<div>
-  <%= link_to "User index", user_list_path %>
-</div>
-
-</div>
+<% if @new_message.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@new_message.errors.count, "error") %> 
+        prohibited this message from being saved:</h2>
+    <p>There were problems with the following fields:</p>
+    <ul>
+    <% @new_message.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
