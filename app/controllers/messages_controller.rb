@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   #before_filter :authenticate, :only => [:create]
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
     this_user = User.find_by_name current_user.name
     @message.user_id = this_user.id
     @message.topic_id = flash[:topic_id]
@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       redirect_to :action => 'index'
     else
       flash[:messageFlash] = "Message didn't post!"
-      redirect_to :action => 'index'
+      render 'index'
     end
   end
 
@@ -29,6 +29,9 @@ class MessagesController < ApplicationController
 
   private
 
+    def message_params
+      params.require(:message).permit(:content, :user_id, :topic_id)
+    end
     # def authenticate
     #   deny_access unless signed_in?
     # end

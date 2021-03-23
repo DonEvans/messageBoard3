@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(params[:topic])
+    @topic = Topic.new(topic_params)
     this_user = User.find_by_name current_user.name
     @topic.user_id = this_user.id
 
@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
       redirect_to messages_path
     else
       flash[:center] = "No new Topic created!"
-      redirect_to :action => 'new'
+      render 'new'
     end
   end
 
@@ -26,8 +26,8 @@ class TopicsController < ApplicationController
     @message = @topic.messages
     @form_heading = "Write post"
     @new_message = Message.new
-    @user = User.find :all
-    @topic_list = Topic.find :all #, :order => "created_at DESC",
+    @user = User.all
+    @topic_list = Topic.all #, :order => "created_at DESC",
                 # :limit =>15
     flash[:topic_id] = @topic.id
   end
@@ -41,6 +41,9 @@ class TopicsController < ApplicationController
 
   private
 
+  def topic_params
+    params.require(:topic).permit(:title, :user_id)
+  end
   #  def authenticate
   #    deny_access unless signed_in?
   #  end

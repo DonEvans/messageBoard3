@@ -3,8 +3,9 @@
     <br>
     <h1>List of users</h1>
 
+    <%# will_paginate %>
     <ul>
-      <% for user in @user %>
+      <% for user in @users %>
       <li style = "color: <%= user.textColor %>; 
             font-family: <%= user.font %>;">
 
@@ -23,6 +24,7 @@
       </li>
       <% end %>
     </ul>
+    <%# will_paginate %>
 
     <%= link_to "New user signup", new_user_path %>
   </div>

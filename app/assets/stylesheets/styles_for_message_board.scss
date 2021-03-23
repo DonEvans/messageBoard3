@@ -33,6 +33,7 @@ div.header {
 div.innerContainer{
   display: block;
   width: 100%;
+  line-height: 1.5;
   margin: 0px auto; 
 }
 
@@ -221,7 +222,7 @@ ul.form li {
   clear: both;
   float: left;
   position: absolute;
-  left: 400px;
+  left: 10px;
   top: 400px;
   width: 100%;
   margin-top: 45px;

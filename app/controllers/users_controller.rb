@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def index
     @title = "List of users"
-    @user = User.all
+    @users = User.all
   end
 
   def edit
@@ -59,13 +59,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :textColor, :font, :password,
                                     :password_confirmation)
-    end
-
-    def signed_in_user
-      unless signed_in?
-        flash[:danger] = "Please log in."
-        redirect_to signin_url
-      end
     end
 
     # Confirms the correct user.
