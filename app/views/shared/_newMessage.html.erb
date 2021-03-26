@@ -3,12 +3,14 @@
 
   <div class="messageFlash"><%= flash[:messageFlash] %></div>
 
-  <div>
+  <div class="messageForm">
     <%= f.label :content, "800 character maximum" %>
+    <br>
     <%= f.text_area :content %>
   </div>
 
   <div>
+    <br>
     <%= f.submit "Submit" %>
   </div>
 

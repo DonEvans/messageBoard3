@@ -15,11 +15,10 @@
   
       <p class = "info">
         #<%= message.id %>
-        <%= message.created_at %>
       </p>
 
       <p class ="author">
-        <%= message.user.name %>
+        <%= message.user.name %> posted <%= time_ago_in_words(message.created_at) %> ago
       </p>
 
       </div>

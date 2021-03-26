@@ -29,8 +29,7 @@
       </p>
   
       <p class = "info">
-        #<%= message.id %>
-        <%= message.created_at %>
+        #<%= message.id %> created <%= time_ago_in_words(message.created_at) %> ago
       </p>
 
       <p class ="author">
